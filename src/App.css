@@ -359,6 +359,7 @@ body {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -396,6 +397,7 @@ body {
     opacity: 0;
     transform: scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -568,4 +570,268 @@ body {
 .btn-modal:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* ================= Thanh tìm kiếm và bộ lọc (Mục 4.3.1) ================= */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 9px 36px 9px 12px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search-input:focus {
+  border-color: #c30000;
+  box-shadow: 0 0 0 2px rgba(195, 0, 0, 0.1);
+}
+
+.btn-clear-search {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.btn-clear-search:hover {
+  color: #4b5563;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 9px 12px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-select:focus {
+  border-color: #c30000;
+}
+
+/* ================= Phân trang (Mục 4.3.2) ================= */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.pagination-info {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-page {
+  padding: 6px 14px;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #374151;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-page:hover:not(:disabled) {
+  border-color: #c30000;
+  color: #c30000;
+}
+
+.btn-page:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.page-current-badge {
+  background-color: #c30000;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 32px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* ================= Thanh tìm kiếm và bộ lọc (Mục 4.3.1) ================= */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 9px 36px 9px 12px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search-input:focus {
+  border-color: #c30000;
+  box-shadow: 0 0 0 2px rgba(195, 0, 0, 0.1);
+}
+
+.btn-clear-search {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.btn-clear-search:hover {
+  color: #4b5563;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 9px 12px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-select:focus {
+  border-color: #c30000;
+}
+
+/* ================= Phân trang (Mục 4.3.2) ================= */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.pagination-info {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-page {
+  padding: 6px 14px;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #374151;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-page:hover:not(:disabled) {
+  border-color: #c30000;
+  color: #c30000;
+}
+
+.btn-page:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.page-current-badge {
+  background-color: #c30000;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 32px;
+  text-align: center;
+  display: inline-block;
 }

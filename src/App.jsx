@@ -3,23 +3,27 @@ import { Routes, Route, Navigate, useSearchParams } from 'react-router-dom';
 import ProductTable from './components/ProductTable.jsx';
 import ProductFormModal from './components/ProductFormModal.jsx';
 import DeleteConfirmModal from './components/DeleteConfirmModal.jsx';
+import SearchFilterBar from './components/SearchFilterBar.jsx';
+import Pagination from './components/Pagination.jsx';
 import useProductSearch from './hooks/useProductSearch.js';
 
 function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // Đọc các tham số tìm kiếm, lọc và phân trang từ URL (Mục 4.3.1, 4.3.2, 4.3.3)
   const q = searchParams.get('q') || '';
   const category = searchParams.get('category') || '';
   const status = searchParams.get('status') || '';
   const page = Number(searchParams.get('page')) || 1;
+  const limit = 10;
 
-  // Lấy danh sách sản phẩm động từ API qua axiosClient
+  // Custom hook tải danh sách sản phẩm qua API có AbortController (Mục 4.3.3, 4.3.4)
   const { data: products, total, loading, error, refetch } = useProductSearch({
     q,
     category,
     status,
     page,
-    limit: 10,
+    limit,
   });
 
   // Modal thêm/sửa sản phẩm
@@ -38,6 +42,39 @@ function ProductsPage() {
     setTimeout(() => {
       setToastMessage('');
     }, 3000);
+  };
+
+  // Cập nhật URLSearchParams đồng bộ với state (Mục 4.3.1)
+  const updateQueryParams = (updates) => {
+    const nextParams = new URLSearchParams(searchParams);
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== '') {
+        nextParams.set(key, String(value));
+      } else {
+        nextParams.delete(key);
+      }
+    });
+    setSearchParams(nextParams);
+  };
+
+  const handleSearchChange = (val) => {
+    // Khi tìm kiếm: cập nhật q và reset trang về 1
+    updateQueryParams({ q: val, page: 1 });
+  };
+
+  const handleCategoryChange = (val) => {
+    // Khi lọc danh mục: cập nhật category và reset trang về 1
+    updateQueryParams({ category: val, page: 1 });
+  };
+
+  const handleStatusChange = (val) => {
+    // Khi lọc trạng thái: cập nhật status và reset trang về 1
+    updateQueryParams({ status: val, page: 1 });
+  };
+
+  const handlePageChange = (newPage) => {
+    // Khi chuyển trang: cập nhật page trên URL (Mục 4.3.2)
+    updateQueryParams({ page: newPage });
   };
 
   const handleOpenAdd = () => {
@@ -99,6 +136,16 @@ function ProductsPage() {
           </button>
         </div>
 
+        {/* Thanh tìm kiếm và bộ lọc (Mục 4.3.1) */}
+        <SearchFilterBar
+          searchQuery={q}
+          onSearchChange={handleSearchChange}
+          selectedCategory={category}
+          onCategoryChange={handleCategoryChange}
+          selectedStatus={status}
+          onStatusChange={handleStatusChange}
+        />
+
         {/* Khối lỗi và nút retry */}
         {error && (
           <div data-testid="error-message" className="error-banner">
@@ -131,6 +178,16 @@ function ProductsPage() {
             products={products}
             onEdit={handleOpenEdit}
             onDelete={handleOpenDelete}
+          />
+        )}
+
+        {/* Điều hướng phân trang (Mục 4.3.2) */}
+        {!loading && total > 0 && (
+          <Pagination
+            currentPage={page}
+            totalItems={total}
+            pageSize={limit}
+            onPageChange={handlePageChange}
           />
         )}
       </main>
