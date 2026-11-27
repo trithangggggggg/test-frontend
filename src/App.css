@@ -1,0 +1,78 @@
+/* HOAN_THIEN: viết CSS cho bài làm tại đây (hoặc tách thành nhiều tệp CSS nhỏ). */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+}
+
+.App-header {
+  background-color: #c30000;
+  padding-left: 50px;
+  padding-top: 10px;
+  color: white;
+  height: 40px;
+}
+
+.App-header-body {
+  background-color: #ffffff;
+  height: 100px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.App-header-body p {
+  font-size: 30px;
+  margin: 0px;
+}
+
+.App-header-body button {
+  background-color: #c30000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+}
+
+
+
+
+.Product-table {
+  width: 100%;
+  border:#9b9b9b  1px solid;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.Product-table-header {
+  background-color: #f2f2f2;
+}
+
+.Product-table th {
+  border: #cdcecf ;
+  padding: 10px;
+  text-align: left;
+}
+ .Product-table td{
+  border: #cdcecf;
+  margin: 10px;
+  text-align: left;
+ }
+
+.Product-status {
+  background-color: #d1fae5;
+  color: #065f46;    
+  border-radius: 20px;
+  width: max-content; 
+  padding: 4px 12px; 
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block; 
+}
+
